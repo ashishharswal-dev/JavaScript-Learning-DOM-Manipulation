@@ -1,0 +1,82 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>DOM Manipulation using JavaScript</h1>
+  <label for="item">Enter a new Item: </label>
+  <input type="text" name="item" id="item">
+  <button>Add Item</button>
+  <ul>
+
+  </ul>
+
+  <script>
+    //const heading = document.querySelector('h1')
+    const list = document.querySelector('ul');
+    const input = document.querySelector('input');
+    const button = document.querySelector('button');
+    //console.log(button.textContent);
+
+    const event1 = button.addEventListener('click', () => {
+
+      const myItem = input.value;
+      //console.log(myItem);
+      input.value = '';
+
+      const listItem = document.createElement('li');
+      const listText = document.createElement('span');
+      const listBtn = document.createElement('button');
+
+      listItem.appendChild(listText);
+      listText.textContent = myItem;
+
+      listItem.appendChild(listBtn);
+      listBtn.textContent = 'Delete';
+
+      list.appendChild(listItem);
+
+      listBtn.addEventListener('click', () => {
+        list.removeChild(listItem);
+      })
+
+
+
+    })
+
+    input.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') {
+        const myItem = input.value;
+        input.value = '';
+
+        const listItem = document.createElement('li');
+        const listText = document.createElement('span');
+        const listBtn = document.createElement('button');
+
+        listItem.appendChild(listText);
+        listText.textContent = myItem;
+
+        listItem.appendChild(listBtn);
+        listBtn.textContent = 'Delete';
+
+        list.appendChild(listItem);
+
+        listBtn.addEventListener('click', () => {
+          list.removeChild(listItem);
+        })
+      }
+
+
+
+    })
+
+
+  </script>
+
+</body>
+
+</html>
